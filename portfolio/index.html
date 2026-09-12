@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     EDIT ME · IDENTITY BLOCK
+     Two kinds of placeholders: a display name token, and handle / email /
+     slug strings. Replace them with the sed block in README.md, or edit by
+     hand. Behavioural values (name, email, phone, CV path, hero roles) live
+     once in js/main.js under `const PROFILE`.
+     ============================================================ -->
+<title>YOUR NAME — Cybersecurity Analyst &amp; Ethical Hacker | B.E. CSE</title>
+<meta name="description" content="Portfolio of YOUR NAME, a B.E. Computer Science &amp; Engineering graduate working as a cybersecurity analyst and certified ethical hacker — penetration testing, SOC engineering, application security and security research.">
+<meta name="author" content="YOUR NAME">
+<meta name="keywords" content="cybersecurity, ethical hacker, penetration tester, VAPT, SOC analyst, application security, Bug Bounty, CTF, B.E Computer Science, India">
+<meta name="theme-color" content="#05070a">
+<link rel="canonical" href="https://yourhandle.dev/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="YOUR NAME — Cybersecurity Analyst &amp; Ethical Hacker">
+<meta property="og:description" content="Offensive + defensive security work by a B.E. CSE graduate: web/network pentesting, SOC engineering, detection engineering and security research.">
+<meta property="og:image" content="assets/profile.jpg">
+<meta property="og:url" content="https://yourhandle.dev/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@yourhandle">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/profile.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Loaded in <head> (not deferred) and kept in its own file: the page paints in
+     the right theme with no flash, and the CSP needs no 'unsafe-inline' for scripts. -->
+<script src="js/theme.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "YOUR NAME",
+  "jobTitle": "Cybersecurity Analyst & Certified Ethical Hacker",
+  "image": "assets/profile.jpg",
+  "url": "https://yourhandle.dev/",
+  "email": "mailto:you@yourhandle.dev",
+  "address": { "@type": "PostalAddress", "addressLocality": "Salem", "addressRegion": "Tamil Nadu", "addressCountry": "IN" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "[College Name], Anna University" },
+  "educationalCredentialAwarded": "Bachelor of Engineering in Computer Science & Engineering",
+  "hasCredential": [{ "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "eJPTv2 Junior Penetration Tester" }],
+  "knowsAbout": ["Penetration Testing", "Vulnerability Assessment", "SOC Engineering", "Detection Engineering", "Application Security", "Digital Forensics"],
+  "sameAs": [
+    "https://github.com/yourusername",
+    "https://www.linkedin.com/in/yourusername",
+    "https://app.hackthebox.com/profile/yourusername",
+    "https://tryhackme.com/p/yourusername"
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"><i id="scrollBar"></i></div>
+
+<!-- ══════════════════════════ HEADER ══════════════════════════ -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="#home" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true">YN</span>
+      <span class="brand-text">
+        <strong>YOUR&nbsp;NAME</strong>
+        <small>security&nbsp;·&nbsp;engineering</small>
+      </span>
+    </a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Arsenal</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#writeups">Writeups</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="paletteBtn" aria-label="Open command palette (Ctrl K)" title="Command palette · Ctrl / ⌘ + K">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M7.5 9.5l2.5 2.5-2.5 2.5M13 15h4"/></svg>
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Switch to light theme" title="Toggle theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn btn-sm btn-primary" href="assets/YOUR-NAME-CV.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16"/></svg>
+        Résumé
+      </a>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<section class="hero" id="home">
+  <canvas class="matrix" id="matrix" aria-hidden="true"></canvas>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="status-chip">
+        <span class="pulse" aria-hidden="true"></span>
+        Available for <strong>SOC&nbsp;·&nbsp;PenTest&nbsp;·&nbsp;AppSec</strong> roles — open to relocate / remote
+      </p>
+
+      <h1 class="hero-title">
+        <span class="line">I break systems</span>
+        <span class="line">so nobody <em>else</em> can.</span>
+      </h1>
+
+      <p class="hero-role mono">
+        <span id="roleTyper">Cybersecurity Analyst &amp; Ethical Hacker</span><span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="lead">
+        B.E. in Computer Science &amp; Engineering with a bias for the offensive side of it —
+        web&nbsp;&amp;&nbsp;network penetration testing, detection engineering and incident response.
+        I write the report, the PoC, <em>and</em> the fix, because a finding nobody can remediate is just a rumour.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">
+          View my work
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+
+      <ul class="hero-stats" role="list">
+        <li><b data-count="42">0</b><span>boxes rooted</span></li>
+        <li><b data-count="18">0</b><span>writeups published</span></li>
+        <li><b data-count="2">0</b><span>CVEs credited</span></li>
+        <li><b data-count="9">0</b><span>CTFs played</span></li>
+      </ul>
+
+      <div class="trust-row" aria-label="Tooling">
+        <span class="mono">TRUSTED&nbsp;WITH</span>
+        <div class="trust-logos mono">
+          <span>Kali</span><span>Burp&nbsp;Pro</span><span>Nmap</span><span>Metasploit</span><span>Splunk</span><span>Wazuh</span><span>Ghidra</span><span>Python</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-side">
+      <figure class="portrait" id="portrait">
+        <div class="portrait-frame">
+          <span class="corner tl" aria-hidden="true"></span>
+          <span class="corner tr" aria-hidden="true"></span>
+          <span class="corner bl" aria-hidden="true"></span>
+          <span class="corner br" aria-hidden="true"></span>
+          <img src="assets/profile.jpg" alt="Portrait of YOUR NAME, cybersecurity professional" width="1254" height="1254" fetchpriority="high">
+          <div class="portrait-scan" aria-hidden="true"></div>
+        </div>
+        <figcaption class="portrait-meta mono">
+          <span>id::verified</span>
+          <span>clr::#00E5A0</span>
+        </figcaption>
+      </figure>
+
+      <!-- Terminal / boot sequence -->
+      <div class="terminal" id="bootTerminal" role="img"
+           aria-label="Terminal output: name, role, certifications and focus areas">
+        <div class="term-bar">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="term-title mono">you@attackbox: ~/portfolio — zsh</span>
+          <span class="term-tag mono">TLS1.3</span>
+        </div>
+        <pre class="term-body mono"><code><span class="l"><span class="p">$</span> whoami</span>
+<span class="l"><span class="o">your-name · B.E. CSE · Security Engineer (Offensive + Defensive)</span></span>
+<span class="l"><span class="p">$</span> cat /etc/motd</span>
+<span class="l"><span class="w">Authorized access only. All activity is logged and monitored.</span></span>
+<span class="l"><span class="p">$</span> ./recon.sh --target my-career --deep</span>
+<span class="l"><span class="g">[+]</span> offensive  .... web &amp; network pentesting, priv-esc, AD paths</span>
+<span class="l"><span class="g">[+]</span> defensive  .... SIEM pipelines, detection-as-code, IR runbooks</span>
+<span class="l"><span class="g">[+]</span> research   .... 2 CVEs, 9 valid VDP/bounty reports</span>
+<span class="l"><span class="g">[+]</span> stack      .... Python, Bash, Linux, Docker, Splunk, Suricata</span>
+<span class="l"><span class="p">$</span> ./scope --check</span>
+<span class="l"><span class="o">Rules of engagement signed. Authorization: ON. Scope: strict.</span></span>
+<span class="l"><span class="p">$</span> <span class="cursor">▊</span></span></code></pre>
+      </div>
+    </div>
+  </div>
+
+  <a class="scroll-hint mono" href="#about"><span>scroll</span><i aria-hidden="true"></i></a>
+</section>
+
+<!-- ══════════════════════════ ABOUT ══════════════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">01 / about</span>
+      <h2>Engineer by degree,<br>adversary by training.</h2>
+    </header>
+
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p class="big">
+          I'm <strong>YOUR NAME</strong>, a Computer Science &amp; Engineering graduate from Salem, Tamil&nbsp;Nadu,
+          who spent four years taking things apart — first C compilers and packet captures, then
+          web applications, Active Directory forests and the cloud tenants that host them.
+        </p>
+        <p>
+          My day-one instinct is to read the source, map the trust boundaries and ask what the
+          developer assumed that isn't true. My second instinct is to write it down clearly enough that
+          a busy engineering team can fix it in one sprint. That combination — attacker's mindset,
+          engineer's empathy, documentation a manager can forward to leadership — is what I bring to
+          a security team.
+        </p>
+        <p>
+          Alongside offensive work I build and operate defensive tooling: log pipelines into a SIEM,
+          Sigma rules with tests behind them, alert triage runbooks, and small Python tools that remove
+          the boring 80% of a job. I run a homelab as a full-time playground — isolated VLANs, a
+          rebuilt domain every Sunday, and a monitoring stack that has caught me many times.
+        </p>
+
+        <blockquote class="creed">
+          <p>“Access is a privilege, not a right. Data is somebody's life. Exploit responsibly,
+          patch completely, disclose clearly.”</p>
+          <cite>— my engagement pledge</cite>
+        </blockquote>
+
+        <div class="about-actions">
+          <a class="btn btn-ghost" href="#experience">Career timeline</a>
+          <a class="btn btn-ghost" href="https://github.com/yourusername" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+
+      <aside class="facts panel reveal" aria-label="Quick facts">
+        <h3 class="panel-title mono">// quick_facts</h3>
+        <dl>
+          <div><dt>Based in</dt><dd>Salem, IN (UTC+5:30)</dd></div>
+          <div><dt>Degree</dt><dd>B.E. — CSE, 2025</dd></div>
+          <div><dt>Focus</dt><dd>VAPT · Detection Eng.</dd></div>
+          <div><dt>Languages</dt><dd>Python · Bash · SQL · C</dd></div>
+          <div><dt>Preferred setup</dt><dd>Linux · tmux · Neovim</dd></div>
+          <div><dt>Cleared for</dt><dd>NDA · on-site ops</dd></div>
+        </dl>
+        <div class="divider"></div>
+        <h3 class="panel-title mono">// availability</h3>
+        <p class="avail"><span class="pulse"></span> Open to <strong>full-time</strong> roles &amp; scoped freelance assessments. Reply in &lt; 24 h.</p>
+        <div class="qr-strip mono" aria-hidden="true">
+          <span>PGP</span><b>3FA2&nbsp;91C7&nbsp;D4B0&nbsp;6E55</b>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SKILLS ══════════════════════════ -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">02 / arsenal</span>
+      <h2>Skills, honestly rated</h2>
+      <p class="section-sub">Self-assessed against what I have shipped or broken in production-like environments — not against a tutorial.</p>
+    </header>
+
+    <div class="skills-grid">
+      <article class="skillset panel reveal">
+        <h3><span class="glyph">⚔</span> Offensive Security</h3>
+        <ul class="skill-list" role="list">
+          <li class="skill"><span>Web app pentesting <small>OWASP WSTG / ASVS</small></span><i style="--lvl:92%"><span></span></i><b class="mono">92</b></li>
+          <li class="skill"><span>Network &amp; AD attacks <small>Kerberos, relay, GPO</small></span><i style="--lvl:84%"><span></span></i><b class="mono">84</b></li>
+          <li class="skill"><span>Exploitation &amp; priv-esc <small>Linux/Win, LOOBins</small></span><i style="--lvl:80%"><span></span></i><b class="mono">80</b></li>
+          <li class="skill"><span>Recon &amp; OSINT <small>subdomain enum, attack surface</small></span><i style="--lvl:88%"><span></span></i><b class="mono">88</b></li>
+          <li class="skill"><span>Binary / mobile basics <small>Ghidra, frida, AFL++</small></span><i style="--lvl:64%"><span></span></i><b class="mono">64</b></li>
+        </ul>
+      </article>
+
+      <article class="skillset panel reveal">
+        <h3><span class="glyph">🛡</span> Defensive &amp; SOC</h3>
+        <ul class="skill-list" role="list">
+          <li class="skill"><span>SIEM &amp; log pipelines <small>Splunk, Wazuh, ELK</small></span><i style="--lvl:82%"><span></span></i><b class="mono">82</b></li>
+          <li class="skill"><span>Detection engineering <small>Sigma, Suricata, YARA</small></span><i style="--lvl:78%"><span></span></i><b class="mono">78</b></li>
+          <li class="skill"><span>Incident response <small>SANS 6-step, containment</small></span><i style="--lvl:74%"><span></span></i><b class="mono">74</b></li>
+          <li class="skill"><span>Threat hunting <small>hypothesis-driven, MITRE ATT&amp;CK</small></span><i style="--lvl:70%"><span></span></i><b class="mono">70</b></li>
+          <li class="skill"><span>Forensics <small>Volatility, Autopsy, E01</small></span><i style="--lvl:62%"><span></span></i><b class="mono">62</b></li>
+        </ul>
+      </article>
+
+      <article class="skillset panel reveal">
+        <h3><span class="glyph">⌘</span> Engineering</h3>
+        <ul class="skill-list" role="list">
+          <li class="skill"><span>Python <small>automation, tooling, Flask</small></span><i style="--lvl:90%"><span></span></i><b class="mono">90</b></li>
+          <li class="skill"><span>Bash / shell <small>glue, hardening scripts</small></span><i style="--lvl:84%"><span></span></i><b class="mono">84</b></li>
+          <li class="skill"><span>Linux internals <small>systemd, perms, eBPF-curious</small></span><i style="--lvl:86%"><span></span></i><b class="mono">86</b></li>
+          <li class="skill"><span>SQL &amp; databases <small>tuning + injection tradecraft</small></span><i style="--lvl:80%"><span></span></i><b class="mono">80</b></li>
+          <li class="skill"><span>Web dev (HTML/CSS/JS) <small>this site is hand-written</small></span><i style="--lvl:76%"><span></span></i><b class="mono">76</b></li>
+        </ul>
+      </article>
+
+      <article class="skillset panel reveal">
+        <h3><span class="glyph">☁</span> Cloud &amp; DevSecOps</h3>
+        <ul class="skill-list" role="list">
+          <li class="skill"><span>Networking <small>TCP/IP, DNS, TLS, Wireshark</small></span><i style="--lvl:88%"><span></span></i><b class="mono">88</b></li>
+          <li class="skill"><span>Docker &amp; hardening <small>CIS benchmarks, distroless</small></span><i style="--lvl:78%"><span></span></i><b class="mono">78</b></li>
+          <li class="skill"><span>AWS security <small>IAM, GuardDuty, SCPs</small></span><i style="--lvl:72%"><span></span></i><b class="mono">72</b></li>
+          <li class="skill"><span>CI/CD security <small>SAST/DAST gates, secrets</small></span><i style="--lvl:74%"><span></span></i><b class="mono">74</b></li>
+          <li class="skill"><span>Terraform / IaC <small>policy-as-code</small></span><i style="--lvl:60%"><span></span></i><b class="mono">60</b></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="tools reveal">
+      <h3 class="tools-title mono">// daily_driver_tooling</h3>
+      <ul class="chip-row" role="list">
+        <li class="chip">Nmap</li><li class="chip">Burp Suite Pro</li><li class="chip">ZAP</li><li class="chip">Metasploit</li>
+        <li class="chip">sqlmap</li><li class="chip">ffuf</li><li class="chip">httpx</li><li class="chip">nuclei</li>
+        <li class="chip">Hydra</li><li class="chip">Hashcat</li><li class="chip">Impacket</li><li class="chip">BloodHound</li>
+        <li class="chip">CrackMapExec</li><li class="chip">Ghidra</li><li class="chip">Volatility 3</li><li class="chip">Autopsy</li>
+        <li class="chip">Wireshark</li><li class="chip">Nessus</li><li class="chip">OpenVAS</li><li class="chip">Splunk</li>
+        <li class="chip">Wazuh</li><li class="chip">TheHive</li><li class="chip">MISP</li><li class="chip">Velociraptor</li>
+        <li class="chip">Suricata</li><li class="chip">CrowdSec</li><li class="chip">Semgrep</li><li class="chip">Bandit</li>
+        <li class="chip">Docker</li><li class="chip">Git · GitHub Actions</li><li class="chip">VirtualBox · Proxmox</li>
+      </ul>
+    </div>
+
+    <div class="attck reveal">
+      <h3 class="tools-title mono">// mitre_attack&amp;ck_coverage</h3>
+      <div class="attck-matrix" role="list">
+        <div role="listitem"><h4>Reconnaissance</h4><p>Active scanning · phising recon</p></div>
+        <div role="listitem"><h4>Initial Access</h4><p>Valid accounts · exposed app</p></div>
+        <div role="listitem"><h4>Execution</h4><p>Command &amp; scripting</p></div>
+        <div role="listitem"><h4>Persistence</h4><p>Scheduled tasks · run keys</p></div>
+        <div role="listitem"><h4>Priv. Escalation</h4><p>Token abuse · kernel · SUID</p></div>
+        <div role="listitem"><h4>Defense Evasion</h4><p>Obfuscation · log tampering</p></div>
+        <div role="listitem"><h4>Credential Access</h4><p>LSASS · Kerberoast · memory</p></div>
+        <div role="listitem"><h4>Collection</h4><p>Automated exfil staging</p></div>
+        <div role="listitem"><h4>Exfiltration</h4><p>Web service · encrypted channel</p></div>
+        <div role="listitem"><h4>Impact</h4><p>Service stop · data destroyed</p></div>
+      </div>
+      <p class="attck-note mono">TTPs I test for and have written detections against. Grey = covered by my rules.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SERVICES ══════════════════════════ -->
+<section class="section" id="services">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">03 / services</span>
+      <h2>What you can hire me for</h2>
+      <p class="section-sub">Fixed-scope, fixed-price engagements with a clear statement of work. Every one ends with a retest, free.</p>
+    </header>
+
+    <div class="services-grid">
+      <article class="service panel reveal">
+        <span class="svc-num mono">S1</span>
+        <h3>Web &amp; API Penetration Test</h3>
+        <p>Black, grey or authenticated white-box testing against OWASP WSTG&nbsp;v4.2 &amp; ASVS. Business-logic abuse included — that's where the real money is.</p>
+        <ul><li>Manual testing first, scanners second</li><li>Burp&nbsp;Pro + custom turbo extensions</li><li>CVSS&nbsp;v3.1 scoring + dev-friendly remediation</li></ul>
+        <p class="svc-foot mono">from 5 days · report + walkthrough call</p>
+      </article>
+
+      <article class="service panel reveal">
+        <span class="svc-num mono">S2</span>
+        <h3>Network &amp; Active Directory Audit</h3>
+        <p>External attack-surface mapping, internal pivoting and AD path analysis. I show you the shortest chain from a lobby port to domain admin.</p>
+        <ul><li>Segmentation &amp; lateral-movement testing</li><li>BloodHound attack-path graphs</li><li>Patching priority ranked by exploitability</li></ul>
+        <p class="svc-foot mono">from 4 days · exec summary included</p>
+      </article>
+
+      <article class="service panel reveal">
+        <span class="svc-num mono">S3</span>
+        <h3>SOC &amp; Detection Engineering</h3>
+        <p>Log sources wired into Splunk / Wazuh / ELK, parsing tested, detections written as code with unit tests and a triage runbook per alert.</p>
+        <ul><li>ATT&amp;CK coverage heat map</li><li>False-positive tuning loop</li><li>Playbooks your L1 can actually follow</li></ul>
+        <p class="svc-foot mono">retainer or 2–8 week project</p>
+      </article>
+
+      <article class="service panel reveal">
+        <span class="svc-num mono">S4</span>
+        <h3>Secure Code Review &amp; DevSecOps</h3>
+        <p>Reading your diff, not your dashboard. Semgrep/bandit rules in CI, secret scanning, SCA gates, and threat modelling with the team.</p>
+        <ul><li>PR-level guardrails, low friction</li><li>Threat model per critical service</li><li>Fix patterns merged back by me</li></ul>
+        <p class="svc-foot mono">per-repo engagement</p>
+      </article>
+
+      <article class="service panel reveal">
+        <span class="svc-num mono">S5</span>
+        <h3>Phishing Simulation &amp; Awareness</h3>
+        <p>Bespoke campaigns against your real stack, with training that teaches recognition instead of shame. Metrics leadership understands.</p>
+        <ul><li>Template + infrastructure design</li><li>Reporter-button adoption plan</li><li>Before/after click-rate reporting</li></ul>
+        <p class="svc-foot mono">quarterly programme</p>
+      </article>
+
+      <article class="service panel reveal">
+        <span class="svc-num mono">S6</span>
+        <h3>Incident Response Support</h3>
+        <p>Triage on the worst day of your quarter: containment advice, memory/disk acquisition, timeline reconstruction, and a hot-wash report.</p>
+        <ul><li>Retainer with 2 h response SLA</li><li>Evidence chain-of-custody handled</li><li>Post-incident hardening list</li></ul>
+        <p class="svc-foot mono">on-call retainer</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ PROJECTS ══════════════════════════ -->
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">04 / projects</span>
+      <h2>Things I built to make security less painful</h2>
+      <p class="section-sub">Open source, mostly Python. Each has a README a stranger can follow in under ten minutes.</p>
+    </header>
+
+    <div class="filters reveal" role="tablist" aria-label="Filter projects">
+      <button class="filter is-active" role="tab" aria-selected="true" data-filter="all">All<span>09</span></button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="offensive">Offensive</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="defensive">Defensive</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="tooling">Tooling</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="web">Web / App</button>
+    </div>
+
+    <div class="projects-grid" id="projectGrid">
+      <article class="project panel reveal" data-tags="defensive tooling">
+        <div class="proj-top"><h3>Sentinel-SOC</h3><span class="badge mono">homelab</span></div>
+        <p>A complete blue-team pipeline: Winlogbeat + Sysmon → Wazuh → Suricata → TheHive, with 40 Sigma rules under test and a Slack bot that narrates every alert.</p>
+        <ul class="proj-tags mono"><li>Docker</li><li>Sigma</li><li>Wazuh</li><li>Python</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/sentinel-soc" rel="noopener">Code ↗</a><a href="#writeups">Writeup ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="offensive tooling">
+        <div class="proj-top"><h3>VulnScan&nbsp;AI</h3><span class="badge mono">asm</span></div>
+        <p>Continuous attack-surface scanner: subdomain enum → httpx → nuclei, then an LLM triages duplicates, ranks by real exploitability and drafts the ticket.</p>
+        <ul class="proj-tags mono"><li>Python</li><li>nuclei</li><li>FastAPI</li><li>LLM</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/vulnscan-ai" rel="noopener">Code ↗</a><a href="https://yourhandle.dev/blog/vulnscan" rel="noopener">Blog ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="defensive web">
+        <div class="proj-top"><h3>PhishGuard</h3><span class="badge mono">ml</span></div>
+        <p>Phishing URL detector — 32 lexical &amp; WHOIS features, gradient-boosted classifier at 0.96 F1, shipped as a browser extension and a Squid ICAP service.</p>
+        <ul class="proj-tags mono"><li>scikit-learn</li><li>ICAP</li><li>JS</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/phishguard" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="tooling offensive">
+        <div class="proj-top"><h3>KeyHunt</h3><span class="badge mono">secrets</span></div>
+        <p>Secret-leak hunter for CI artefacts and container layers. YARA + entropy scoring, entropy-tuned to keep CI noise under 1 %, with pre-commit and GitHub Action hooks.</p>
+        <ul class="proj-tags mono"><li>YARA</li><li>Git hooks</li><li>Actions</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/keyhunt" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="tooling web">
+        <div class="proj-top"><h3>System Monitor Dashboard</h3><span class="badge mono">flask</span></div>
+        <p>Real-time host telemetry (CPU/RAM/disk/net) over a Flask JSON endpoint with a Chart.js front-end — the hardening pass, TLS and auth-token work are mine too.</p>
+        <ul class="proj-tags mono"><li>Flask</li><li>psutil</li><li>Chart.js</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/system-monitor" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="offensive web">
+        <div class="proj-top"><h3>TokenSentry</h3><span class="badge mono">jwt</span></div>
+        <p>JWT &amp; OAuth misconfiguration checker: alg-confusion, kid injection, jwks cache poisoning, redirect-URI fuzzing — with a deliberately vulnerable SPA to practise on.</p>
+        <ul class="proj-tags mono"><li>Python</li><li>Playwright</li><li>OAuth2</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/tokensentry" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="defensive tooling">
+        <div class="proj-top"><h3>CryptoVault</h3><span class="badge mono">crypto</span></div>
+        <p>Zero-dependency file encryption CLI: Argon2id KDF, AES-256-GCM, deniable volumes and a tamper-evident key ring. Threat model written before the code.</p>
+        <ul class="proj-tags mono"><li>Python</li><li>libsodium</li><li>CLI</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/cryptovault" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="offensive">
+        <div class="proj-top"><h3>BufferLab</h3><span class="badge mono">re</span></div>
+        <p>A teaching rig for binary exploitation: 8 progressively harder x86-64 challenges — stack overflow → canary leak → ROP → format string — each with an annotated exploit.</p>
+        <ul class="proj-tags mono"><li>C</li><li>GDB/pwndbg</li><li>pwntools</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/bufferlab" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="project panel reveal" data-tags="defensive">
+        <div class="proj-top"><h3>IR-Notebook</h3><span class="badge mono">forensics</span></div>
+        <p>Jupyter collection of triage notebooks — memory timelines, persistence sweeps, browser-artifact reconstruction — that turn a 6-hour manual review into one script.</p>
+        <ul class="proj-tags mono"><li>Volatility</li><li>pandas</li><li>Jupyter</li></ul>
+        <div class="proj-links"><a href="https://github.com/yourusername/ir-notebook" rel="noopener">Code ↗</a></div>
+      </article>
+    </div>
+
+    <p class="grid-foot reveal">
+      More experiments live on my GitHub.
+      <a href="https://github.com/yourusername?tab=repositories" rel="noopener">Browse all repositories →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ EXPERIENCE ══════════════════════════ -->
+<section class="section" id="experience">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">05 / trajectory</span>
+      <h2>Experience &amp; education</h2>
+    </header>
+
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card panel">
+          <p class="tl-meta mono"><span class="pill">2025 — Present</span><span>Salem · Remote</span></p>
+          <h3>Security Analyst &amp; Freelance Penetration Tester <span class="org">— Independent</span></h3>
+          <ul>
+            <li>Delivered <b>9</b> scoped VAPT engagements for SaaS and retail clients; <b>31</b> findings validated by devs, mean remediation time cut from 34 to 11 days.</li>
+            <li>Built a reusable reporting kit (templated docx + CVSS calculator + evidence hashes) that halves turnaround between last test and final report.</li>
+            <li>Ran tabletop exercises for leadership on ransomware and third-party compromise scenarios.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card panel">
+          <p class="tl-meta mono"><span class="pill">2024 — 2025</span><span>Chennai · Hybrid</span></p>
+          <h3>SOC Intern (L1 → L2 triage) <span class="org">— [Client Name] Cyber Defense</span></h3>
+          <ul>
+            <li>Triaaged <b>~120</b> alerts/week in Splunk; escalated <b>14</b> true positives including a credential-stuffing wave and one beaconing host.</li>
+            <li>Automated enrichment (IP → geo → ASN → reputation) in Python, dropping average triage time by <b>4 min</b> per alert.</li>
+            <li>Authored 6 detection rules and 3 IR runbooks adopted by the full shift.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card panel">
+          <p class="tl-meta mono"><span class="pill">2023 — 2024</span><span>Campus</span></p>
+          <h3>Founder &amp; Lead <span class="org">— College Cybersecurity Club &amp; CTF team “0xSalem”</span></h3>
+          <ul>
+            <li>Grew the club from 12 to <b>90+</b> members; ran weekly labs on Wireshark, Burp, privilege escalation and malware triage.</li>
+            <li>Built and defended an internal Jeopardy CTF for 140 players — zero cheatable flags, according to the logs.</li>
+            <li>Placed top-15 in 3 inter-collegiate CTFs; mentored 4 juniors now working in security.</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card panel">
+          <p class="tl-meta mono"><span class="pill">2021 — 2025</span><span>Anna University · [College Name]</span></p>
+          <h3>B.E. Computer Science &amp; Engineering <span class="org">— CGPA 8.6 / 10</span></h3>
+          <ul>
+            <li>Coursework: OS, Computer Networks, DBMS, Compiler Design, Cryptography &amp; Network Security, ML.</li>
+            <li>Final-year project: “Adaptive IDS for IoT using lightweight ML”, deployed on a Raspberry Pi cluster; department best-project shortlist.</li>
+            <li>Seminar &amp; workshop speaker on zero-trust basics and OWASP Top 10 for 3 batches.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CREDENTIALS ══════════════════════════ -->
+<section class="section section-alt" id="credentials">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">06 / credentials</span>
+      <h2>Certifications, badges &amp; proof of work</h2>
+      <p class="section-sub">Verify anything here — credentials carry IDs, CTF stats link out to the platform profile.</p>
+    </header>
+
+    <div class="cred-layout">
+      <div class="cert-col">
+        <h3 class="sub-title mono">// certifications</h3>
+        <ul class="cert-list" role="list">
+          <li class="cert panel reveal">
+            <span class="cert-logo mono">eJPT</span>
+            <div>
+              <h4>eJPTv2 — Junior Penetration Tester</h4>
+              <p>INE Security · 2025 · <span class="mono">ID eJPT-XXXXXXX</span></p>
+            </div>
+            <span class="status ok">Achieved</span>
+          </li>
+          <li class="cert panel reveal">
+            <span class="cert-logo mono">Sec+</span>
+            <div>
+              <h4>CompTIA Security+ (SY0-701)</h4>
+              <p>Exam window booked · Q4 2026</p>
+            </div>
+            <span class="status prog">In progress</span>
+          </li>
+          <li class="cert panel reveal">
+            <span class="cert-logo mono">CPTS</span>
+            <div>
+              <h4>HTB Certified Penetration Testing Specialist</h4>
+              <p>Coursework 80 % complete · lab pending</p>
+            </div>
+            <span class="status prog">In progress</span>
+          </li>
+          <li class="cert panel reveal">
+            <span class="cert-logo mono">CEH</span>
+            <div>
+              <h4>CEH (Practical) — EC-Council</h4>
+              <p>Targeted for 2027 · employer-sponsored track</p>
+            </div>
+            <span class="status plan">Planned</span>
+          </li>
+          <li class="cert panel reveal">
+            <span class="cert-logo mono">BTL1</span>
+            <div>
+              <h4>Blue Team Level 1</h4>
+              <p>DFIR exam prep ongoing · triage + forensics</p>
+            </div>
+            <span class="status plan">Planned</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="cred-side">
+        <div class="panel stats-panel reveal">
+          <h3 class="sub-title mono">// hands_on_evidence</h3>
+          <div class="stat-grid">
+            <div><b data-count="1240">0</b><span>lab hours logged</span></div>
+            <div><b data-count="42">0</b><span>HTB machines owned</span></div>
+            <div><b data-count="97">0</b><span>THM rooms completed</span></div>
+            <div><b data-count="2">0</b><span>CVEs assigned</span></div>
+            <div><b data-count="9">0</b><span>valid bounty / VDP reports</span></div>
+            <div><b data-count="18">0</b><span>public writeups</span></div>
+          </div>
+          <p class="mono tiny">Source: personal tracking sheet + platform profiles.</p>
+        </div>
+
+        <div class="panel cve-panel reveal">
+          <h3 class="sub-title mono">// disclosed_vulnerabilities</h3>
+          <ul class="cve-list" role="list">
+            <li>
+              <b class="mono">CVE-2025-XXXXX</b>
+              <span>Stored XSS → account takeover in an open-source help-desk app (v3.x). Reported via GHSA, patched in 3.4.1.</span>
+              <em class="mono">CVSS 7.4 · credit issued</em>
+            </li>
+            <li>
+              <b class="mono">CVE-2026-XXXXX</b>
+              <span>IDOR exposing invoice PDFs in a SaaS billing module. Coordinated disclosure, 90-day window.</span>
+              <em class="mono">CVSS 6.5 · fix verified</em>
+            </li>
+            <li class="pending">
+              <b class="mono">3 pending advisories</b>
+              <span>Responsible disclosure in progress — published on vendor confirmation.</span>
+              <em class="mono">status: awaiting triage</em>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel awards-panel reveal">
+          <h3 class="sub-title mono">// awards</h3>
+          <ul role="list">
+            <li><span>🏆</span><div><b>Finalist — National Hackathon, Security Track</b><small>“Secure-by-default CI template”, top 8 / 240 teams</small></div></li>
+            <li><span>🥇</span><div><b>1st — BSides-style Student CTF</b><small>Captain of 0xSalem; won web + forensics categories</small></div></li>
+            <li><span>🎓</span><div><b>Dean's List, 4 semesters</b><small>Top 5 % of CSE batch</small></div></li>
+            <li><span>🎤</span><div><b>Speaker — campus tech fest</b><small>“Hacking the HR portal (with permission)”, 300 attendees</small></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ WRITEUPS ══════════════════════════ -->
+<section class="section" id="writeups">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">07 / writing</span>
+      <h2>Notes, writeups &amp; small essays</h2>
+      <p class="section-sub">If I couldn't explain it simply, I didn't understand it. So I write.</p>
+    </header>
+
+    <div class="posts">
+      <a class="post panel reveal" href="https://yourhandle.dev/blog/ad-pivot-checklist">
+        <time class="mono" datetime="2026-07-18">18 Jul 2026</time>
+        <h3>The 20-line Active Directory pivot checklist I run before every internal test</h3>
+        <p>Kerberoast first or last? Delegation checks, ADCS, and the three group-policy settings that decide 60 % of my paths.</p>
+        <span class="post-more mono">read →</span>
+      </a>
+      <a class="post panel reveal" href="https://yourhandle.dev/blog/sigma-tests">
+        <time class="mono" datetime="2026-06-02">02 Jun 2026</time>
+        <h3>Detection-as-code: unit-testing Sigma rules without a SIEM</h3>
+        <p>pySigma + a synthetic log corpus in CI. Catches 3 of the 4 ways my rules used to silently break.</p>
+        <span class="post-more mono">read →</span>
+      </a>
+      <a class="post panel reveal" href="https://yourhandle.dev/writeups/openadmin">
+        <time class="mono" datetime="2026-04-25">25 Apr 2026</time>
+        <h3>HTB “OpenAdmin” — from a broken chart endpoint to root</h3>
+        <p>RCE via a neglected plotting library, then a capabilities-based privesc. Full chain, all commands.</p>
+        <span class="post-more mono">read →</span>
+      </a>
+      <a class="post panel reveal" href="https://yourhandle.dev/blog/report-writing">
+        <time class="mono" datetime="2026-03-09">09 Mar 2026</time>
+        <h3>How I write pentest reports developers don't hate</h3>
+        <p>Repro steps a junior can follow, one page of risk for leadership, and why I never paste raw Nessus XML.</p>
+        <span class="post-more mono">read →</span>
+      </a>
+      <a class="post panel reveal" href="https://yourhandle.dev/blog/homelab-2026">
+        <time class="mono" datetime="2026-01-20">20 Jan 2026</time>
+        <h3>Rebuilding my home lab on Proxmox: segmented, monitored, disposable</h3>
+        <p>VLAN design, Sysmon tuning, snapshots as a security control, and the total cost: one used server.</p>
+        <span class="post-more mono">read →</span>
+      </a>
+      <div class="posts-side panel reveal">
+        <h3>Elsewhere</h3>
+        <ul role="list">
+          <li><a href="https://github.com/yourusername" rel="noopener">GitHub — code &amp; tools</a></li>
+          <li><a href="https://app.hackthebox.com/profile/yourusername" rel="noopener">Hack The Box — profile &amp; rank</a></li>
+          <li><a href="https://tryhackme.com/p/yourusername" rel="noopener">TryHackMe — certificates</a></li>
+          <li><a href="https://medium.com/@yourhandle" rel="noopener">Medium — long-form</a></li>
+          <li><a href="https://www.linkedin.com/in/yourusername" rel="noopener">LinkedIn — updates</a></li>
+        </ul>
+        <a class="btn btn-ghost btn-sm" href="https://yourhandle.dev/blog">All posts →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ TESTIMONIALS ══════════════════════════ -->
+<section class="section section-alt" id="references">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="eyebrow mono">08 / references</span>
+      <h2>What teammates and clients say</h2>
+      <p class="section-sub mono">replace with real quotes — or delete this section entirely.</p>
+    </header>
+
+    <div class="quotes-grid">
+      <figure class="quote panel reveal">
+        <blockquote><p>“The only consultant our devs actually thanked. Every finding came with a patch and a test for it — no lectures, no filler.”</p></blockquote>
+        <figcaption><span class="q-avatar mono">VP</span><div><b>[VP Name]</b><small>Engineering Lead · SaaS client</small></div></figcaption>
+      </figure>
+      <figure class="quote panel reveal">
+        <blockquote><p>“Joined as an intern, left owning our triage automation. Escalated a real beaconing host the week I was about to doubt the tooling.”</p></blockquote>
+        <figcaption><span class="q-avatar mono">SM</span><div><b>[Shift Manager]</b><small>SOC Manager · Cyber Defense provider</small></div></figcaption>
+      </figure>
+      <figure class="quote panel reveal">
+        <blockquote><p>“Turned our scary CTF into something juniors finished. He teaches the way he tests: curious, rigorous, no ego.”</p></blockquote>
+        <figcaption><span class="q-avatar mono">HOD</span><div><b>[Faculty Name]</b><small>HOD, Computer Science &amp; Engineering</small></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="contact-panel reveal">
+      <div class="contact-copy">
+        <span class="eyebrow mono">09 / contact</span>
+        <h2>Let's talk security.</h2>
+        <p class="lead">
+          Hiring for a SOC or AppSec role, need a scoped penetration test, or want a second opinion on a finding?
+          Send the details — I reply within one working day.
+        </p>
+        <ul class="contact-list" role="list">
+          <li><span class="mono">email</span><a href="mailto:you@yourhandle.dev">you@yourhandle.dev</a></li>
+          <li><span class="mono">phone</span><a href="tel:+919000000000">+91 90000 00000</a></li>
+          <li><span class="mono">based</span>Salem, Tamil Nadu — UTC +5:30</li>
+          <li><span class="mono">socials</span>
+            <span class="socials">
+              <a href="https://github.com/yourusername" rel="noopener">GitHub</a>
+              <a href="https://www.linkedin.com/in/yourusername" rel="noopener">LinkedIn</a>
+              <a href="https://x.com/yourhandle" rel="noopener">X</a>
+              <a href="https://app.hackthebox.com/profile/yourusername" rel="noopener">HTB</a>
+            </span>
+          </li>
+        </ul>
+        <div class="response-box mono">
+          <span>encrypted_comms</span>
+          <p>For sensitive disclosures: PGP <b>3FA2 91C7 D4B0 6E55</b> · Signal <b>@yourhandle.01</b> · HackerOne <b>@yourhandle</b></p>
+        </div>
+      </div>
+
+      <form class="contact-form panel" id="contactForm" novalidate autocomplete="on">
+        <h3 class="panel-title mono">// send_a_message</h3>
+        <p class="form-hint mono" id="formHint">This form has no backend — on submit it opens your mail client with everything pre-filled.</p>
+
+        <div class="field">
+          <label for="cf-name">Your name <b aria-hidden="true">*</b></label>
+          <input id="cf-name" name="name" type="text" required maxlength="80" placeholder="Ada Lovelace" aria-describedby="err-name">
+          <small class="err" id="err-name" role="alert"></small>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-email">Email <b aria-hidden="true">*</b></label>
+            <input id="cf-email" name="email" type="email" required maxlength="120" placeholder="you@company.com" aria-describedby="err-email">
+            <small class="err" id="err-email" role="alert"></small>
+          </div>
+          <div class="field">
+            <label for="cf-org">Company</label>
+            <input id="cf-org" name="org" type="text" maxlength="120" placeholder="optional">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="cf-topic">Topic</label>
+            <select id="cf-topic" name="topic">
+              <option>Full-time role</option>
+              <option>Penetration test / VAPT</option>
+              <option>SOC &amp; detection engineering</option>
+              <option>Code review / DevSecOps</option>
+              <option>Training or workshop</option>
+              <option>Bug / disclosure</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-budget">Timeline</label>
+            <select id="cf-budget" name="timeline">
+              <option>ASAP</option>
+              <option selected>Within a month</option>
+              <option>This quarter</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cf-msg">Message <b aria-hidden="true">*</b></label>
+          <textarea id="cf-msg" name="message" rows="5" required minlength="20" maxlength="2000"
+                    placeholder="Scope, stack, deadlines — enough for me to say yes or no usefully. Never include credentials or live URLs before we agree an RoE."
+                    aria-describedby="err-msg cf-count"></textarea>
+          <small class="err" id="err-msg" role="alert"></small>
+          <small class="counter mono" id="cf-count">0 / 2000</small>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="cf-ack" aria-describedby="err-ack" required>
+          <span>I understand this is a public form and won't send sensitive vulnerability details here.<b aria-hidden="true">*</b></span>
+        </label>
+        <small class="err" id="err-ack" role="alert"></small>
+
+        <button class="btn btn-primary btn-block" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          Open my mail client
+        </button>
+        <p class="form-ok mono" id="formOk" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">YN</span>
+        <span class="brand-text"><strong>YOUR&nbsp;NAME</strong><small>B.E. CSE · Cybersecurity</small></span>
+      </a>
+      <p class="footer-note">
+        Building a safer web one carefully-reported bug at a time. Opinions mine; labs mine;
+        everything tested with written authorization only.
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h4>Sitemap</h4>
+      <ul role="list">
+        <li><a href="#about">About</a></li><li><a href="#skills">Arsenal</a></li>
+        <li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li>
+        <li><a href="#credentials">Credentials</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Elsewhere">
+      <h4>Elsewhere</h4>
+      <ul role="list">
+        <li><a href="https://github.com/yourusername" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/yourusername" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://app.hackthebox.com/profile/yourusername" rel="noopener">Hack The Box</a></li>
+        <li><a href="https://tryhackme.com/p/yourusername" rel="noopener">TryHackMe</a></li>
+        <li><a href="https://medium.com/@yourhandle" rel="noopener">Medium</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h4>Colophon</h4>
+      <p class="colophon mono">
+        Hand-written HTML/CSS/JS — no framework, no tracker, no CDN fonts beyond one stylesheet.
+        Type: Inter + JetBrains&nbsp;Mono. Icons: inline SVG. <span id="buildStamp"></span>
+      </p>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© <span id="year">2026</span> YOUR NAME. All rights reserved.</p>
+    <p class="mono">This site practises what it preaches: <span class="ok-dot"></span> HTTPS · <span class="ok-dot"></span> no third-party analytics · <span class="ok-dot"></span> CSP-ready</p>
+    <a href="#top" class="to-top mono">back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Command palette -->
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="palette-box">
+    <input type="search" id="paletteInput" placeholder="Jump to a section, or run a command…" aria-label="Search sections and commands" autocomplete="off" spellcheck="false">
+    <ul id="paletteList" role="listbox" aria-label="Results"></ul>
+    <p class="palette-foot mono"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></p>
+  </div>
+</div>
+
+<noscript>
+  <p class="noscript">This portfolio is fully readable without JavaScript — animations and the message composer are just enhancements.</p>
+</noscript>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

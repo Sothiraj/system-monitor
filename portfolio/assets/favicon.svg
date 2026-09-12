@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Terminal shield logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00e5a0"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 3 58 12v20c0 15.5-10.6 26.4-26 29C16.6 58.4 6 47.5 6 32V12Z"
+        fill="#070b10" stroke="url(#g)" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M18 26l8 7-8 7" fill="none" stroke="url(#g)" stroke-width="4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 41h14" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,32 @@
+# Netlify / Cloudflare Pages response headers for this static site.
+# Copy the values to nginx/Apache/CF as-is if you host elsewhere.
+# Check your deployment at https://securityheaders.com/ (target: A+).
+
+# ── pages ────────────────────────────────────────────────────────────────────
+/*
+  # script-src has no 'unsafe-inline': the only pre-paint script lives in js/theme.js.
+  # style-src needs 'unsafe-inline' because CSS custom properties (--lvl) are set as
+  # style attributes in the HTML so the skill bars still render with JS disabled.
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://github.com; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), interest-cohort=(), microphone=(), payment=(), usb=()
+
+# ── assets: short cache so a photo swap shows up without a rename ─────────────
+/assets/*
+  Cache-Control: public, max-age=86400
+  Cross-Origin-Resource-Policy: same-origin
+
+# ── css/js: bump the filename (style.v2.css) when you redeploy, or keep 1h ───
+/css/*
+  Cache-Control: public, max-age=3600
+/js/*
+  Cache-Control: public, max-age=3600
+
+# ── never cache the HTML, or returning visitors see the old build ─────────────
+/index.html
+  Cache-Control: no-cache
+  Revisit-After: 86400
