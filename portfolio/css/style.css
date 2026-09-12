@@ -25,7 +25,7 @@
   --step-2:  clamp(1.35rem, calc(1.22rem + .65vw), 1.75rem);
   --step-3:  clamp(1.62rem, calc(1.38rem + 1.2vw), 2.3rem);
   --step-4:  clamp(2rem, calc(1.55rem + 2.2vw), 3.1rem);
-  --step-5:  clamp(2.5rem, calc(1.7rem + 4vw), 4.4rem);
+  --step-5:  clamp(2.05rem, calc(1.3rem + 3.6vw), 4.4rem);
 
   /* geometry */
   --maxw: 1180px;
@@ -172,7 +172,7 @@ hr { border: 0; border-top: var(--hair) solid var(--line); }
 }
 
 /* ── 03 · TYPOGRAPHY ─────────────────────────────────────────────────────── */
-h1, h2, h3, h4 { line-height: 1.12; letter-spacing: -.028em; font-weight: 700; text-wrap: balance; }
+h1, h2, h3, h4 { line-height: 1.12; letter-spacing: -.028em; font-weight: 700; text-wrap: balance; overflow-wrap: break-word; }
 h1 { font-size: var(--step-5); }
 h2 { font-size: var(--step-4); }
 h3 { font-size: var(--step-1); letter-spacing: -.018em; }
