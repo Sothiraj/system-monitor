@@ -23,8 +23,11 @@ portfolio/
 
 ```bash
 cd portfolio
-python3 -m http.server 8000          # → http://localhost:8000
+python3 tools/serve.py               # → http://localhost:8000
 ```
+
+`tools/serve.py` is just `http.server` plus no-cache headers (so a refresh always shows
+your latest edit) and correct MIME types. `python3 -m http.server 8000` works too.
 
 Any static server works (`npx serve`, `caddy file-server`, nginx). Double-clicking
 `index.html` also works; the only thing that needs HTTP is the font request.
