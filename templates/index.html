@@ -1,100 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
-  <title>System Frequency Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>System Monitor Dashboard</title>
+  <meta name="description" content="Real-time CPU, memory, disk and network monitoring dashboard." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
-<body class="bg-dark text-white p-4">
-  <div class="container">
-    <h2 class="text-center mb-4">🔁 System Frequency Dashboard</h2>
+<body>
+  <div class="container py-4">
+    <!-- Header -->
+    <header class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+      <div>
+        <h1 class="h3 mb-1">🖥️ System Monitor <span class="badge text-bg-secondary align-middle">v{{ app_version }}</span></h1>
+        <p class="text-secondary mb-0 small">
+          <span id="hostname" aria-live="polite">—</span> &middot;
+          <span id="platform">—</span> &middot;
+          Uptime <span id="uptime">—</span>
+        </p>
+      </div>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <span id="statusDot" class="status-dot status-ok" title="Connection status" role="status" aria-label="Connection status"></span>
+        <span id="lastUpdated" class="text-secondary small">connecting…</span>
+        <select id="intervalSelect" class="form-select form-select-sm w-auto" aria-label="Refresh interval">
+          <option value="1000">1s</option>
+          <option value="2000" selected>2s</option>
+          <option value="5000">5s</option>
+          <option value="10000">10s</option>
+        </select>
+        <button id="pauseBtn" class="btn btn-sm btn-outline-light" type="button" aria-pressed="false">⏸ Pause</button>
+        <button id="themeBtn" class="btn btn-sm btn-outline-light" type="button">🌙 Light</button>
+      </div>
+    </header>
 
-    <div class="mb-3">
-      <p><strong>Hostname:</strong> <span id="hostname"></span></p>
-      <p><strong>Platform:</strong> <span id="platform"></span></p>
-      <p><strong>Uptime:</strong> <span id="uptime"></span> seconds</p>
-    </div>
+    <!-- Alert banner -->
+    <div id="alertBanner" class="alert alert-warning d-none" role="alert" aria-live="assertive"></div>
 
-    <div class="row">
-      <div class="col-md-6"><canvas id="cpuChart"></canvas></div>
-      <div class="col-md-6"><canvas id="ramChart"></canvas></div>
-      <div class="col-md-6"><canvas id="diskChart"></canvas></div>
-      <div class="col-md-6"><canvas id="netChart"></canvas></div>
+    <!-- KPI cards -->
+    <section class="row g-3 mb-3" aria-label="Current utilization">
+      <div class="col-6 col-lg-3">
+        <div class="card kpi h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h2 class="h6 text-secondary mb-1">CPU</h2>
+              <span id="cpuValue" class="fs-4 fw-bold">—</span>
+            </div>
+            <div class="progress" role="progressbar" aria-label="CPU usage" aria-valuemin="0" aria-valuemax="100">
+              <div id="cpuBar" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="cpuSub" class="small text-secondary mt-2 mb-0">—</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card kpi h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h2 class="h6 text-secondary mb-1">Memory</h2>
+              <span id="ramValue" class="fs-4 fw-bold">—</span>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Memory usage" aria-valuemin="0" aria-valuemax="100">
+              <div id="ramBar" class="progress-bar bg-success" style="width: 0%"></div>
+            </div>
+            <p id="ramSub" class="small text-secondary mt-2 mb-0">—</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card kpi h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h2 class="h6 text-secondary mb-1">Disk</h2>
+              <span id="diskValue" class="fs-4 fw-bold">—</span>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Disk usage" aria-valuemin="0" aria-valuemax="100">
+              <div id="diskBar" class="progress-bar bg-warning" style="width: 0%"></div>
+            </div>
+            <p id="diskSub" class="small text-secondary mt-2 mb-0">—</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="card kpi h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-baseline">
+              <h2 class="h6 text-secondary mb-1">Network</h2>
+              <span id="netValue" class="fs-6 fw-bold">—</span>
+            </div>
+            <div class="d-flex gap-3 mt-2">
+              <div><div class="small text-secondary">↓ down</div><div id="netDown" class="fw-semibold">—</div></div>
+              <div><div class="small text-secondary">↑ up</div><div id="netUp" class="fw-semibold">—</div></div>
+            </div>
+            <p id="netSub" class="small text-secondary mt-2 mb-0">—</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="row g-3 mb-3" aria-label="Metric history">
+      <div class="col-md-6">
+        <div class="card chart-card"><div class="card-body">
+          <h2 class="h6">CPU usage (%)</h2>
+          <div class="chart-wrap"><canvas id="cpuChart"></canvas></div>
+        </div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="card chart-card"><div class="card-body">
+          <h2 class="h6">Memory usage (%)</h2>
+          <div class="chart-wrap"><canvas id="ramChart"></canvas></div>
+        </div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="card chart-card"><div class="card-body">
+          <h2 class="h6">Disk usage (%)</h2>
+          <div class="chart-wrap"><canvas id="diskChart"></canvas></div>
+        </div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="card chart-card"><div class="card-body">
+          <h2 class="h6">Network throughput (KB/s)</h2>
+          <div class="chart-wrap"><canvas id="netChart"></canvas></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- System details -->
+    <section class="card mb-3" aria-label="System details">
+      <div class="card-body">
+        <h2 class="h6">System details</h2>
+        <dl class="row small mb-0">
+          <dt class="col-sm-3">Boot time (UTC)</dt><dd class="col-sm-3" id="bootTime">—</dd>
+          <dt class="col-sm-3">Processes</dt><dd class="col-sm-3" id="procCount">—</dd>
+          <dt class="col-sm-3">CPU cores</dt><dd class="col-sm-3" id="cpuCores">—</dd>
+          <dt class="col-sm-3">Load avg (1/5/15m)</dt><dd class="col-sm-3" id="loadAvg">—</dd>
+          <dt class="col-sm-3">CPU frequency</dt><dd class="col-sm-3" id="cpuFreq">—</dd>
+          <dt class="col-sm-3">Python</dt><dd class="col-sm-3" id="pyVersion">—</dd>
+        </dl>
+      </div>
+    </section>
+
+    <footer class="d-flex flex-wrap justify-content-between gap-2 small text-secondary">
+      <span>Polling <code id="apiUrl">/api/v1/stats</code> &middot; history preloaded from <code>/api/v1/history</code></span>
+      <span><a href="/api/v1/stats">stats JSON</a> &middot; <a href="/healthz">health</a> &middot; <a href="/readyz">ready</a></span>
+    </footer>
+  </div>
+
+  <!-- Toast for connection errors -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="errorToast" class="toast text-bg-danger" role="alert" aria-live="assertive">
+      <div class="toast-body" id="errorToastBody">Connection error.</div>
     </div>
   </div>
 
   <script>
-    const MAX_POINTS = 20;
-
-    const simulateFluctuation = (val) => {
-      const base = 50;
-      const noise = (Math.random() - 0.5) * 0.1;
-      return base + noise + (val % 0.1);
+    window.DASHBOARD_CONFIG = {
+      statsUrl: '/api/v1/stats',
+      historyUrl: '/api/v1/history?limit=60',
+      thresholds: { cpu: {{ alert_cpu }}, ram: {{ alert_ram }}, disk: {{ alert_disk }} },
+      maxPoints: 60
     };
-
-    const createLineChart = (ctxId, label, color) => {
-      return new Chart(document.getElementById(ctxId).getContext('2d'), {
-        type: 'line',
-        data: {
-          labels: [],
-          datasets: [{
-            label: label,
-            data: [],
-            borderColor: color,
-            borderWidth: 1,
-            fill: false,
-            tension: 0.4,
-            pointRadius: 0
-          }]
-        },
-        options: {
-          animation: false,
-          responsive: true,
-          scales: {
-            x: { ticks: { display: false } },
-            y: {
-              beginAtZero: false,
-              suggestedMin: 49.95,
-              suggestedMax: 50.05,
-              title: { display: true, text: 'Frequency-style Usage' }
-            }
-          }
-        }
-      });
-    };
-
-    const cpuChart = createLineChart('cpuChart', 'CPU Freq (%)', 'red');
-    const ramChart = createLineChart('ramChart', 'RAM Freq (%)', 'lime');
-    const diskChart = createLineChart('diskChart', 'Disk Freq (%)', 'orange');
-    const netChart = createLineChart('netChart', 'Network Freq (MB)', 'aqua');
-
-    function updateChart(chart, label, value) {
-      const freqVal = simulateFluctuation(value);
-      if (chart.data.labels.length >= MAX_POINTS) {
-        chart.data.labels.shift();
-        chart.data.datasets[0].data.shift();
-      }
-      chart.data.labels.push(label);
-      chart.data.datasets[0].data.push(freqVal);
-      chart.update();
-    }
-
-    async function fetchStats() {
-      const res = await fetch('https://system-monitor-6efz.onrender.com/stats');
-      const data = await res.json();
-      const time = new Date().toLocaleTimeString();
-
-      document.getElementById('hostname').innerText = data.hostname;
-      document.getElementById('platform').innerText = data.platform;
-      document.getElementById('uptime').innerText = Math.floor(data.uptime);
-
-      updateChart(cpuChart, time, data.cpu);
-      updateChart(ramChart, time, data.ram);
-      updateChart(diskChart, time, data.disk);
-      updateChart(netChart, time, data.net_sent + data.net_recv);
-    }
-
-    setInterval(fetchStats, 3000);
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>

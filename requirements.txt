@@ -1,2 +1,6 @@
-Flask
-psutil
+# Pinned for reproducible builds. Refresh with:
+#   pip-compile --generate-hashes (or pip freeze after testing an upgrade)
+Flask==3.1.3
+psutil==7.2.2
+gunicorn==26.2.0
+pytest==9.1.1
